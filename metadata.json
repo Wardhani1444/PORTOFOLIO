@@ -1,0 +1,8 @@
+{
+  "name": "Davina Aulia - Digital Business Portfolio",
+  "description": "An immersive high-performance 3D WebGL developer portfolio for Davina Aulia Wardhani Triatno, S1 Bisnis Digital UNESA, featuring procedural responsive shaders, authentic tactile response elements, and tailored interactive dashboards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
