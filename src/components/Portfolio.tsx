@@ -26,6 +26,7 @@ import {
 } from "lucide-react"
 
 import { WebGLShader } from "./ui/web-gl-shader"
+import SkillsDashboard from "./SkillsDashboard"
 import { LiquidButton, MetalButton } from "./ui/liquid-glass-button"
 const profileImg = new URL("../assets/images/regenerated_image_1781220060516.jpg", import.meta.url).href
 
@@ -43,7 +44,7 @@ interface Project {
   id: string
   title: string
   description: string
-  category: "IoT" | "Digital Platform" | "Social Good" | "SaaS Web"
+  category: "IoT" | "Digital Platform" | "Social Good" | "SaaS Web" | "WordPress CMS"
   difficulty: "default" | "primary" | "success" | "gold" | "bronze"
   tags: string[]
   metrics: string
@@ -53,6 +54,7 @@ interface Project {
     distortion: number
     speed: number
   }
+  link?: string
 }
 
 interface Organization {
@@ -112,7 +114,8 @@ export default function Portfolio() {
       difficulty: "bronze",
       tags: ["Web-Based Ordering", "UMKM Business Model", "Market Research", "Product Strategy"],
       metrics: "Pemberdayaan UMKM Kuliner",
-      shaderPreset: { xScale: 0.5, yScale: 0.3, distortion: 0.25, speed: 0.03 }
+      shaderPreset: { xScale: 0.5, yScale: 0.3, distortion: 0.25, speed: 0.03 },
+      link: "https://sajikita.vercel.app/"
     },
     {
       id: "ecocare",
@@ -122,17 +125,19 @@ export default function Portfolio() {
       difficulty: "primary",
       tags: ["Crowdfunding Flow", "Volunteer Management", "Access Analysis", "Community Support"],
       metrics: "Transparan & Kolaboratif",
-      shaderPreset: { xScale: 1.5, yScale: 0.8, distortion: 0.02, speed: 0.008 }
+      shaderPreset: { xScale: 1.5, yScale: 0.8, distortion: 0.02, speed: 0.008 },
+      link: "https://ecocare-chi.vercel.app/"
     },
     {
       id: "vestiary",
-      title: "VESTIARY • Digital Wardrobe SaaS",
-      description: "Aplikasi web pengelolaan wardrobe pribadi untuk mengorganisasi koleksi busana pribadi dan menyusun rencana outfit harian secara digital, interaktif & efisien.",
-      category: "SaaS Web",
+      title: "VESTIARY • Digital Wardrobe (WordPress)",
+      description: "Portal pengelolaan wardrobe pribadi berbasis WordPress untuk mengorganisasi koleksi busana pribadi dan menyusun rencana outfit harian secara digital, interaktif & efisien.",
+      category: "WordPress CMS",
       difficulty: "success",
-      tags: ["Windsurf Studio", "Wardrobe Cataloging", "Digital Experience", "UI/UX Planning"],
+      tags: ["WordPress", "Wardrobe Cataloging", "Digital Experience", "Web Design"],
       metrics: "Efisiensi Tata Busana Digital",
-      shaderPreset: { xScale: 0.8, yScale: 0.15, distortion: 0.01, speed: 0.004 }
+      shaderPreset: { xScale: 0.8, yScale: 0.15, distortion: 0.01, speed: 0.004 },
+      link: "https://drive.google.com/file/d/1QJf_zsye4fwhNjOLQoPNDEM6DiP7-z1I/view?usp=drive_link"
     }
   ]
 
@@ -426,12 +431,12 @@ export default function Portfolio() {
                     <h3 className="font-extrabold text-white text-lg text-center leading-tight">Davina Aulia W. T.</h3>
                     <p className="text-xs text-slate-400 text-center mt-2 font-mono">Bisnis Digital Enthusiast</p>
                     
-                    <div className="flex gap-2.5 mt-5">
+                    <div className="flex gap-2.5 mt-5 w-full">
                       <a 
                         href="https://www.linkedin.com/in/davina-auliaa-590982404" 
                         target="_blank" 
                         rel="noreferrer" 
-                        className="flex items-center gap-1.5 px-4 py-2 bg-zinc-900/60 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-xl text-xs font-semibold text-slate-200 transition"
+                        className="flex items-center justify-center gap-1.5 px-4 py-2 bg-zinc-900/60 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-xl text-xs font-semibold text-slate-200 transition w-full"
                       >
                         <Linkedin className="h-3.5 w-3.5 text-blue-400" />
                         <span>LinkedIn Profile</span>
@@ -613,7 +618,19 @@ export default function Portfolio() {
 
                         <div>
                           <h4 className="text-base font-bold text-white group-hover:text-emerald-300 transition-colors">
-                            {project.title}
+                            {project.link ? (
+                              <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1.5 hover:underline"
+                              >
+                                {project.title}
+                                <ExternalLink className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
+                              </a>
+                            ) : (
+                              project.title
+                            )}
                           </h4>
                           <p className="text-[12px] text-slate-300 mt-3 leading-relaxed">
                             {project.description}
@@ -638,6 +655,16 @@ export default function Portfolio() {
                         </span>
 
                         <div className="flex gap-2">
+                          {project.link && (
+                            <a
+                              href={project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="bg-emerald-500/10 hover:bg-emerald-500/20 text-[10.5px] font-bold text-emerald-300 px-3 py-1.5 rounded-xl border border-emerald-500/20 hover:border-emerald-500/35 transition flex items-center gap-1 cursor-pointer"
+                            >
+                              Kunjungi <ExternalLink className="h-3 w-3" />
+                            </a>
+                          )}
                           <button
                             onClick={() => applyPreset(project.shaderPreset)}
                             className="bg-zinc-900/80 hover:bg-zinc-800 text-[10.5px] font-bold text-slate-300 px-3 py-1.5 rounded-xl border border-zinc-800 hover:border-zinc-700 transition cursor-pointer"
@@ -662,128 +689,7 @@ export default function Portfolio() {
                 transition={{ duration: 0.3 }}
                 className="space-y-8"
               >
-                {/* Tech & Business Matrix */}
-                <div className="bg-zinc-950/50 border border-zinc-900 p-8 rounded-3xl backdrop-blur-md space-y-6">
-                  <div className="space-y-2">
-                    <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                      <Cpu className="h-5 w-5 text-emerald-400" />
-                      Matriks Keterampilan Kerja
-                    </h3>
-                    <p className="text-xs text-slate-400">
-                      Integrasi soft-skills organisasi dan keahlian teknis (Hard Skills) yang menopang efisiensi kolaborasi digital.
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-                    
-                    {/* Hard Skills */}
-                    <div className="bg-zinc-900/40 border border-zinc-800/60 p-6 rounded-2xl relative">
-                      <div className="mb-4 text-cyan-400 font-extrabold text-sm tracking-wider flex items-center gap-2 font-mono">
-                        <Laptop className="h-4 w-4" />
-                        KEMAMPUAN TEKNIS (HARD SKILLS)
-                      </div>
-                      
-                      <div className="space-y-3.5">
-                        <div>
-                          <div className="flex justify-between text-xs font-mono text-slate-300 mb-1">
-                            <span>Pengembangan Website Dasar (HTML/CSS/JS)</span>
-                            <span className="text-teal-400">Intermediate</span>
-                          </div>
-                          <div className="w-full bg-zinc-950 rounded-full h-1.5 border border-zinc-800">
-                            <div className="bg-teal-500 h-1.5 rounded-full" style={{ width: "75%" }} />
-                          </div>
-                        </div>
-
-                        <div>
-                          <div className="flex justify-between text-xs font-mono text-slate-300 mb-1">
-                            <span>Digital Marketing (Aset & Kampanye)</span>
-                            <span className="text-teal-400">Intermediate</span>
-                          </div>
-                          <div className="w-full bg-zinc-950 rounded-full h-1.5 border border-zinc-800">
-                            <div className="bg-teal-500 h-1.5 rounded-full" style={{ width: "75%" }} />
-                          </div>
-                        </div>
-
-                        <div>
-                          <div className="flex justify-between text-xs font-mono text-slate-300 mb-1">
-                            <span>Windsurf Studio & Cloud Tools</span>
-                            <span className="text-teal-400">Intermediate</span>
-                          </div>
-                          <div className="w-full bg-zinc-950 rounded-full h-1.5 border border-zinc-800">
-                            <div className="bg-teal-500 h-1.5 rounded-full" style={{ width: "75%" }} />
-                          </div>
-                        </div>
-
-                        <div>
-                          <div className="flex justify-between text-xs font-mono text-slate-300 mb-1">
-                            <span>Analisis Data Dasar & Canva Desain</span>
-                            <span className="text-teal-400">Intermediate</span>
-                          </div>
-                          <div className="w-full bg-zinc-950 rounded-full h-1.5 border border-zinc-800">
-                            <div className="bg-teal-500 h-1.5 rounded-full" style={{ width: "75%" }} />
-                          </div>
-                        </div>
-
-                        <div className="pt-1.5 text-[11px] text-zinc-500 font-mono">
-                          *Juga cakap mengoperasikan rangkaian perkakas Microsoft Office (Word, Excel, PowerPoint).
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Soft Skills */}
-                    <div className="bg-zinc-900/40 border border-zinc-800/60 p-6 rounded-2xl relative">
-                      <div className="mb-4 text-emerald-400 font-extrabold text-sm tracking-wider flex items-center gap-2 font-mono">
-                        <HeartHandshake className="h-4 w-4" />
-                        KUALITAS DIRI (SOFT SKILLS)
-                      </div>
-                      
-                      <div className="grid grid-cols-2 gap-3.5">
-                        <div className="p-3 bg-zinc-950/40 border border-zinc-800 rounded-lg">
-                          <h5 className="font-bold text-xs text-white">Komunikasi</h5>
-                          <p className="text-[10px] text-slate-400 mt-1 leading-normal">Mampu menyampaikan ide analitik yang kompleks secara persuasif.</p>
-                        </div>
-
-                        <div className="p-3 bg-zinc-950/40 border border-zinc-800 rounded-lg">
-                          <h5 className="font-bold text-xs text-white">Kerja Sama Tim</h5>
-                          <p className="text-[10px] text-slate-400 mt-1 leading-normal">Kolaboratif lintas fungsi di lingkungan kepanitiaan / operasional.</p>
-                        </div>
-
-                        <div className="p-3 bg-zinc-950/40 border border-zinc-800 rounded-lg">
-                          <h5 className="font-bold text-xs text-white">Problem Solving</h5>
-                          <p className="text-[10px] text-slate-400 mt-1 leading-normal">Metodologis merancang solusi model bisnis bermigrasi tech.</p>
-                        </div>
-
-                        <div className="p-3 bg-zinc-950/40 border border-zinc-800 rounded-lg">
-                          <h5 className="font-bold text-xs text-white">Manajemen Waktu</h5>
-                          <p className="text-[10px] text-slate-400 mt-1 leading-normal">Seimbang antara akademik IPK tinggi dan dinamika kepanitiaan.</p>
-                        </div>
-                      </div>
-
-                      <div className="mt-4 flex flex-wrap gap-1.5">
-                        {["Adaptabilitas", "Koordinasi Proyek", "Manajemen Organisasi"].map((item) => (
-                          <span key={item} className="text-[10px] font-mono px-2.5 py-1 rounded bg-zinc-950 text-slate-300 border border-zinc-850">
-                            ✓ {item}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-
-                {/* Tactile interaction section showcasing she works with digital systems */}
-                <div className="bg-zinc-950/40 border border-zinc-900 p-8 rounded-3xl backdrop-blur-md text-center space-y-4">
-                  <h4 className="text-sm font-bold text-slate-200">Interactive Tactile Showcase (Digital Canvas)</h4>
-                  <p className="text-xs text-slate-400 max-w-xl mx-auto">
-                    Sebagai akademisi Bisnis Digital, saya menyukai antarmuka yang sangat responsif. Coba sentuh tombol berbasis micro-depressing scale ini untuk merasakan umpan balik taktis yang dinamis.
-                  </p>
-                  
-                  <div className="flex flex-wrap items-center justify-center gap-4 pt-3">
-                    <MetalButton variant="success" className="text-xs scale-90">Transisi Selesai</MetalButton>
-                    <MetalButton variant="gold" className="text-xs scale-90">Model Bisnis Valid</MetalButton>
-                    <MetalButton variant="bronze" className="text-xs scale-90">Logistik Lancar</MetalButton>
-                  </div>
-                </div>
+                <SkillsDashboard />
               </motion.section>
             )}
 
