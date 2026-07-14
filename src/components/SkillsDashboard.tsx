@@ -30,8 +30,8 @@ const SKILLS_DATA: Skill[] = [
     name: "Pengembangan Website Dasar",
     level: "Intermediate",
     percentage: 50,
-    description: "Pembuatan struktur situs web responsif menggunakan HTML5, CSS3 modern, JavaScript kontemporer, dan kerangka kerja web dinamis untuk mendukung keberadaan online bisnis.",
-    tools: ["HTML5 / CSS3", "JavaScript ES6+", "Tailwind CSS", "Vite & React Ecosystem"],
+    description: "Pembuatan struktur situs web responsif menggunakan HTML, CSS, PHP, serta integrasi Firebase dan MySQL untuk manajemen basis data guna mendukung keberadaan online bisnis.",
+    tools: ["PHP", "HTML", "CSS", "Firebase", "MySQL"],
     projects: [
       { name: "SAJIKITA • Student Catering Deck", link: "https://sajikita.vercel.app/" },
       { name: "ECOCARE • Crowd Donation", link: "https://ecocare-chi.vercel.app/" }
@@ -58,7 +58,7 @@ const SKILLS_DATA: Skill[] = [
     description: "Pemanfaatan asisten pengkodean berbasis AI untuk akselerasi siklus pengembangan aplikasi, dikombinasikan dengan manajemen kolaborasi berbasis komputasi cerdas (Cloud).",
     tools: ["AI Coding Assistant", "GitHub Version Control", "Google Cloud Storage", "Serverless Deployment"],
     projects: [
-      { name: "VESTIARY • Digital Wardrobe (WordPress)", link: "https://drive.google.com/file/d/1QJf_zsye4fwhNjOLQoPNDEM6DiP7-z1I/view?usp=drive_link" }
+      { name: "VESTIARY • Digital Wardrobe (Laravel)", link: "https://drive.google.com/file/d/1QJf_zsye4fwhNjOLQoPNDEM6DiP7-z1I/view?usp=drive_link" }
     ],
     synergy: "Meningkatkan kecepatan perangkaian kode produk hingga 5x lipat dengan metodologi AI-assisted development."
   },
@@ -137,21 +137,21 @@ export default function SkillsDashboard() {
     if (synergySkills.includes("web-dev") && synergySkills.includes("marketing")) {
       return {
         concept: "E-Commerce Landing Page Berkinerja Tinggi",
-        description: "Situs web satu halaman yang dioptimalkan untuk mesin pencari (SEO) dengan salinan penjualan (copywriting) persuasif dan formulir pesanan cepat untuk bisnis katering UMKM.",
+        description: "Situs web dinamis (PHP + MySQL) yang dioptimalkan untuk mesin pencari (SEO) dengan copywriting persuasif dan formulir pesanan cepat untuk bisnis katering UMKM.",
         impact: "Mendongkrak rasio konversi pesanan katering hingga 45% dibanding pemasaran manual via chat."
       }
     }
     if (synergySkills.includes("web-dev") && synergySkills.includes("analytics")) {
       return {
         concept: "Dasbor Visualisasi Penjualan UMKM",
-        description: "Aplikasi web ringkas yang terkoneksi ke spreadsheet bisnis, menampilkan grafik interaktif performa laba rugi bulanan dan preferensi menu pelanggan.",
+        description: "Aplikasi web ringkas (PHP + MySQL) yang menampilkan grafik interaktif performa laba rugi bulanan dan preferensi menu pelanggan.",
         impact: "Membantu pemilik kedai kuliner mengambil keputusan bahan baku secara efisien berbasis real-world data."
       }
     }
     if (synergySkills.includes("cloud-tools") && synergySkills.includes("web-dev")) {
       return {
         concept: "Prototipe Aplikasi Web Interaktif Kilat",
-        description: "Arsitektur frontend modular modern (React + Tailwind) yang dirakit presisi menggunakan AI Coding Assistant untuk mengekstrak data JSON katalog produk secara dinamis.",
+        description: "Arsitektur web dinamis (PHP + HTML + CSS) yang dirakit presisi menggunakan AI Coding Assistant dengan integrasi database Firebase.",
         impact: "Siklus riset dan pengujian konsep bisnis digital dipercepat dari 4 minggu menjadi hanya 3 hari."
       }
     }

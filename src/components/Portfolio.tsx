@@ -44,7 +44,7 @@ interface Project {
   id: string
   title: string
   description: string
-  category: "IoT" | "Digital Platform" | "Social Good" | "SaaS Web" | "WordPress CMS"
+  category: "IoT" | "Digital Platform" | "Social Good" | "SaaS Web" | "Laravel Framework"
   difficulty: "default" | "primary" | "success" | "gold" | "bronze"
   tags: string[]
   metrics: string
@@ -55,6 +55,7 @@ interface Project {
     speed: number
   }
   link?: string
+  image?: string
 }
 
 interface Organization {
@@ -104,7 +105,9 @@ export default function Portfolio() {
       difficulty: "gold",
       tags: ["IoT Hardware Integration", "System Architecture", "User Experience Analysis", "Business Concept"],
       metrics: "Otomatis & Terjadwal",
-      shaderPreset: { xScale: 2.2, yScale: 0.9, distortion: 0.12, speed: 0.02 }
+      shaderPreset: { xScale: 2.2, yScale: 0.9, distortion: 0.12, speed: 0.02 },
+      image: "/src/assets/images/smart_fish_feeder_1783999562667.jpg",
+      link: "https://www.youtube.com/watch?v=_gxOzsGvMCw"
     },
     {
       id: "sajikita",
@@ -115,7 +118,8 @@ export default function Portfolio() {
       tags: ["Web-Based Ordering", "UMKM Business Model", "Market Research", "Product Strategy"],
       metrics: "Pemberdayaan UMKM Kuliner",
       shaderPreset: { xScale: 0.5, yScale: 0.3, distortion: 0.25, speed: 0.03 },
-      link: "https://sajikita.vercel.app/"
+      link: "https://sajikita.vercel.app/",
+      image: "/src/assets/images/regenerated_image_1783999820445.png"
     },
     {
       id: "ecocare",
@@ -126,18 +130,20 @@ export default function Portfolio() {
       tags: ["Crowdfunding Flow", "Volunteer Management", "Access Analysis", "Community Support"],
       metrics: "Transparan & Kolaboratif",
       shaderPreset: { xScale: 1.5, yScale: 0.8, distortion: 0.02, speed: 0.008 },
-      link: "https://ecocare-chi.vercel.app/"
+      link: "https://ecocare-chi.vercel.app/",
+      image: "/src/assets/images/regenerated_image_1784000013716.png"
     },
     {
       id: "vestiary",
-      title: "VESTIARY • Digital Wardrobe (WordPress)",
-      description: "Portal pengelolaan wardrobe pribadi berbasis WordPress untuk mengorganisasi koleksi busana pribadi dan menyusun rencana outfit harian secara digital, interaktif & efisien.",
-      category: "WordPress CMS",
+      title: "VESTIARY • Digital Wardrobe (Laravel)",
+      description: "Portal pengelolaan wardrobe pribadi berbasis Laravel untuk mengorganisasi koleksi busana pribadi dan menyusun rencana outfit harian secara digital, interaktif & efisien.",
+      category: "Laravel Framework",
       difficulty: "success",
-      tags: ["WordPress", "Wardrobe Cataloging", "Digital Experience", "Web Design"],
+      tags: ["Laravel", "Wardrobe Cataloging", "Digital Experience", "Web Design"],
       metrics: "Efisiensi Tata Busana Digital",
       shaderPreset: { xScale: 0.8, yScale: 0.15, distortion: 0.01, speed: 0.004 },
-      link: "https://drive.google.com/file/d/1QJf_zsye4fwhNjOLQoPNDEM6DiP7-z1I/view?usp=drive_link"
+      link: "https://drive.google.com/file/d/1QJf_zsye4fwhNjOLQoPNDEM6DiP7-z1I/view?usp=drive_link",
+      image: "/src/assets/images/regenerated_image_1784000136980.png"
     }
   ]
 
@@ -615,6 +621,18 @@ export default function Portfolio() {
                             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
                           </div>
                         </div>
+
+                        {project.image && (
+                          <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-zinc-900 bg-zinc-900/40 shadow-inner group-hover:border-zinc-800 transition duration-300">
+                            <img
+                              src={project.image}
+                              alt={project.title}
+                              referrerPolicy="no-referrer"
+                              className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/50 to-transparent" />
+                          </div>
+                        )}
 
                         <div>
                           <h4 className="text-base font-bold text-white group-hover:text-emerald-300 transition-colors">
