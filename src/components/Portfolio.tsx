@@ -28,6 +28,11 @@ import {
 import { WebGLShader } from "./ui/web-gl-shader"
 import SkillsDashboard from "./SkillsDashboard"
 import { LiquidButton, MetalButton } from "./ui/liquid-glass-button"
+
+const smartFishFeederImg = new URL("../assets/images/smart_fish_feeder_1783999562667.jpg", import.meta.url).href
+const sajikitaImg = new URL("../assets/images/regenerated_image_1783999820445.png", import.meta.url).href
+const ecocareImg = new URL("../assets/images/regenerated_image_1784000013716.png", import.meta.url).href
+const vestiaryImg = new URL("../assets/images/regenerated_image_1784000136980.png", import.meta.url).href
 const profileImg = new URL("../assets/images/regenerated_image_1781220060516.jpg", import.meta.url).href
 
 // Types
@@ -106,7 +111,7 @@ export default function Portfolio() {
       tags: ["IoT Hardware Integration", "System Architecture", "User Experience Analysis", "Business Concept"],
       metrics: "Otomatis & Terjadwal",
       shaderPreset: { xScale: 2.2, yScale: 0.9, distortion: 0.12, speed: 0.02 },
-      image: "/src/assets/images/smart_fish_feeder_1783999562667.jpg",
+      image: smartFishFeederImg,
       link: "https://www.youtube.com/watch?v=_gxOzsGvMCw"
     },
     {
@@ -119,7 +124,7 @@ export default function Portfolio() {
       metrics: "Pemberdayaan UMKM Kuliner",
       shaderPreset: { xScale: 0.5, yScale: 0.3, distortion: 0.25, speed: 0.03 },
       link: "https://sajikita.vercel.app/",
-      image: "/src/assets/images/regenerated_image_1783999820445.png"
+      image: sajikitaImg
     },
     {
       id: "ecocare",
@@ -131,7 +136,7 @@ export default function Portfolio() {
       metrics: "Transparan & Kolaboratif",
       shaderPreset: { xScale: 1.5, yScale: 0.8, distortion: 0.02, speed: 0.008 },
       link: "https://ecocare-chi.vercel.app/",
-      image: "/src/assets/images/regenerated_image_1784000013716.png"
+      image: ecocareImg
     },
     {
       id: "vestiary",
@@ -143,7 +148,7 @@ export default function Portfolio() {
       metrics: "Efisiensi Tata Busana Digital",
       shaderPreset: { xScale: 0.8, yScale: 0.15, distortion: 0.01, speed: 0.004 },
       link: "https://drive.google.com/file/d/1QJf_zsye4fwhNjOLQoPNDEM6DiP7-z1I/view?usp=drive_link",
-      image: "/src/assets/images/regenerated_image_1784000136980.png"
+      image: vestiaryImg
     }
   ]
 
